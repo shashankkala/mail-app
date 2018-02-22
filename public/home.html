@@ -1,0 +1,39 @@
+<br>
+<div class="container" ng-controller="mailController">
+			<form name="sendEmailForm" method="post" action="" class="form-horizontal" role="form" novalidate>
+				<div class="form-group">
+					<label for="emailAddress" class="col-lg-3 col-md-3 col-xs-12 control-label">To Email Address</label>
+					<div class="col-lg-9 col-md-9 col-xs-12">
+						<input ng-model="toEmail" type="email" class="form-control" name="toEmail" placeholder="Recipient Email Address" ng-change="changeState()" required />
+						<p ng-if="sendEmailForm.toEmail.$invalid && sendEmailForm.toEmail.$dirty" class="help-block" style="color:red">
+							Enter a valid Email address
+						</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="clientName" class="col-lg-3 col-md-3 col-xs-12 control-label">Subject</label>
+					<div class="col-lg-9 col-md-9 col-xs-12">
+						<input ng-model="subject" type="text" class="form-control" name="subject" placeholder="Subject of the mail">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="clientMessage" class="col-lg-3 col-md-3 col-xs-12 control-label">Message</label>
+					<div class="col-lg-9 col-md-9 col-xs-12">
+						<textarea ng-model="mailMessage" type="text" class="form-control" name="mailMessage" rows="10" 
+						placeholder="Type your message here"></textarea>
+					</div>
+				</div>
+			</form>
+			<button class="btn btn-success" ng-click="sendMail()" ng-disabled="sendEmailForm.$invalid">Send Mail
+				<span class="glyphicon glyphicon-envelope"></span>
+			</button>
+			<button class="btn btn-primary" ng-click="resetData()">Reset
+				<span class="glyphicon glyphicon-refresh"></span>
+			</button>
+		</div>
+		<br><br><br>
+		<div class="container">
+			<button class="btn btn-info" ng-click="moreApps()">More Apps
+				<span class="glyphicon glyphicon-forward"></span>
+			</button>
+		</div>

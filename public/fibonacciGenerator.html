@@ -1,0 +1,29 @@
+<br>
+<div class="container">
+	<p>This is an Angular JS application that accepts a numerical value and generates the Fibonacci sequence until that number.</p>
+	<p>The button to generate will be disabled if the input is not a valid natural number. Leading zeros are also not allowed.</p>
+	<br>
+</div>
+<div class="container">
+	<div>
+		<form name="fibonacciGenerator" autocomplete="off" novalidate>
+			<input type="text" class="form-control" name="number" ng-model="number" autofocus placeholder="Enter a number" ng-pattern="/^[1-9][0-9]*$/" ng-maxlength="21" ng-change="hide()" required />
+			
+			<!-- This validation message will be shown when either the pattern does not match or there is no value in the input (only if once you had started typing)-->
+			<p ng-if="(fibonacciGenerator.number.$error.required || fibonacciGenerator.number.$error.pattern) && fibonacciGenerator.number.$dirty" style="color:red" class="help-block">Please enter a natural number.</p>
+			
+			<!-- This validation message will be shown if the length of input is greater than 21 digits (after 21 digits the next number of the sequence is shown in scientific notation) --> 
+			<p ng-if="fibonacciGenerator.number.$error.maxlength" style="color:red" class="help-block">More than 21 digits are not allowed.</p>
+			
+			<br/>
+			
+			<button type="submit" class="btn btn-primary" ng-disabled="fibonacciGenerator.$invalid" ng-click="generateFibonacci()">Generate</button>
+			<button type="button" class="btn btn-success" ng-click="reset()">Reset</button>
+		</form>
+	</div>
+	<br/>
+
+	<!-- These 2 paragraphs are shown only when 'showNow' becomes true (after clicking generate)-->
+	<p ng-if="showNow">The Fibonacci numbers upto {{number}} is shown below</p>
+	<p ng-if="showNow">{{displayArray(sequence)}}</p>
+</div>
