@@ -17,10 +17,13 @@
 			<p ng-if="primeChecker.number.$error.maxlength" style="color:red" class="help-block">More than 20 digits are not allowed.</p>
 			
 			<br>
-			<br><br>
 			
-			<button type="submit" class="btn btn-primary" ng-disabled="primeChecker.$invalid" ng-click="checkPrime()">Check</button>
-			<button type="button" class="btn btn-success" ng-click="reset()">Reset</button>
+			<button type="submit" class="btn btn-primary" ng-disabled="primeChecker.$invalid" ng-click="checkPrime()">Check
+				<span class="glyphicon glyphicon-question-sign"></span>
+			</button>
+			<button type="button" class="btn btn-success" ng-click="reset()">Reset
+				<span class="glyphicon glyphicon-refresh"></span>
+			</button>
 		</form>
 	</div>
 	<br/>
