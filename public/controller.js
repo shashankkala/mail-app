@@ -1,9 +1,18 @@
-var app = angular.module('mailApp', ['ngMaterial']);
-app.controller('mailController', ['$scope', '$http', '$mdToast', '$animate',
-	function($scope, $http, $mdToast, $animate){
-		//$scope.toEmail = 'abc@gmail.com';
-		//$scope.subject = 'Test Mail';
-		//$scope.mailMessage = 'Hi! This is a test mail';
+var app = angular.module('mailApp', ['ngMaterial', 'ngRoute']);
+
+app.config(function($routeProvider){
+	$routeProvider
+	.when('/more',{
+		templateUrl : 'more.html'
+	})
+	.otherwise({
+		redirectTo : '/' 
+	});
+});
+
+app.controller('mailController', ['$scope', '$http', '$mdToast', '$animate', '$location',
+	function($scope, $http, $mdToast, $animate, $location){
+		
 		$scope.toastPosition = {
 			bottom: false,
 			top: true,
@@ -66,6 +75,18 @@ app.controller('mailController', ['$scope', '$http', '$mdToast', '$animate',
 		
 		$scope.changeState = function(){
 			$scope.sendEmailForm.toEmail.$dirty = true;
+		};
+		
+		$scope.moreApps = function(){
+			/* $mdToast.show(
+						$mdToast.simple()
+							.content('Redirecting...')
+							.position($scope.getToastPosition())
+							.hideDelay(5000)
+			
+					); */
+			console.log('inside function moreApps');
+			$location.path('/more');
 		};
 		
 	}

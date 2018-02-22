@@ -1,3 +1,5 @@
+var path = require('path');
+
 exports.sendMail = function(req, res){
 	
 	var nodemailer = require('nodemailer');
