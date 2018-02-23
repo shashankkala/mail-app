@@ -1,3 +1,3 @@
 # mail-app
 
-This is a simple application which sends mail to an email address provided by the user along with the subject and the body of the mail.
+This is a web application that consists of a collection of small applications like sending a mail, toDo App, prime Checker etc.
