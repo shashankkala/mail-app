@@ -1,0 +1,24 @@
+
+<h2 class="container">My ToDo List</h2>
+<div class="container">
+	<div>
+		<form name="toDoForm" autocomplete="off" novalidate>
+			<input type="text" class="form-control" ng-model="toDoInput" name="toDoInput" autofocus ng-change="changeState()" placeholder="Add New" required>
+			
+			<p ng-if="toDoForm.toDoInput.$error.required && toDoForm.toDoInput.$dirty" style="color:red" class="help-block">Please enter a task.</p>
+			<br>
+			<button type="submit" class="btn btn-primary" ng-disabled="toDoForm.$invalid" ng-click="addTask()">Add
+				<span class="glyphicon glyphicon-plus"></span>
+			</button>
+		</form>
+	</div>
+	<br>
+
+	<div ng-repeat="x in toDoList">
+		<input type="checkbox" ng-model="x.done"> <span ng-bind="x.toDoText"></span>
+	</div>
+	<br>
+	<button class="btn btn-danger" ng-click="removeTask()">Remove marked
+		<span class="glyphicon glyphicon-remove"></span>
+	</button>
+</div>

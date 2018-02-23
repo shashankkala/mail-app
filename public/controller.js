@@ -17,6 +17,10 @@ app.config(function($routeProvider){
 		templateUrl: 'fibonacciGenerator.html',
 		controller: 'fibonacciController'
 	})
+	.when('/todo',{
+		templateUrl: 'toDo.html',
+		controller: 'toDoController'
+	})
 	.otherwise({
 		redirectTo : '/'
 	});
@@ -181,4 +185,27 @@ app.controller('fibonacciController', function($scope){
 		$scope.showNow = false;
 		$scope.fibonacciGenerator.number.$dirty = false;
 	};
+});
+
+app.controller('toDoController', function($scope) {
+    $scope.toDoList = [{toDoText:'Learn Node.js', done:false}];
+	
+	$scope.changeState = function(){
+		$scope.toDoForm.toDoInput.$dirty = true;
+	};
+	
+    $scope.addTask = function() {
+		$scope.toDoForm.toDoInput.$dirty = false;
+        $scope.toDoList.push({toDoText:$scope.toDoInput, done:false});
+        $scope.toDoInput = "";
+    };
+
+    $scope.removeTask = function() {
+        var oldList = $scope.toDoList;
+        $scope.toDoList = [];
+        angular.forEach(oldList, function(x) {
+            if (!x.done) $scope.toDoList.push(x);
+        });
+    };
+
 });
